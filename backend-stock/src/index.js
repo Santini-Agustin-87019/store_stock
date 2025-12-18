@@ -1,5 +1,6 @@
 import app from "./app.js";
 import { connectDB } from "./config/db.js";
+import './models/index.js'; // Aseguramos que se carguen los modelos y sus relaciones
 
 const PORT = process.env.PORT || 3000;
 
