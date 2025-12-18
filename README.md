@@ -32,12 +32,12 @@ En la terminal, dentro de la carpeta `backend-stock`, ejecutaremos:
    npm install express sequelize sqlite3 dotenv cors morgan
    ```
 
-   **express**: es un Framework para crear servidores web en Node.js.  
-   **sequelize**: es un ORM (Object-Relational Mapping) que facilita la interacción con bases de datos SQL.  
-   **sqlite3**: es el motor de base de datos que usaremos para almacenar los datos.  
-   **dotenv**: nos permite cargar variables de entorno desde un archivo `.env`.
-   **cors**: es un middleware que permite manejar las políticas de CORS (Cross-Origin Resource Sharing). Basicamente permite que nuestro backend pueda ser consumido desde otros dominios (como nuestro frontend).
-   **morgan**: es un middleware para registrar las solicitudes HTTP en la consola, lo que ayuda en el desarrollo y depuración.
+   - **express**: es un Framework para crear servidores web en Node.js.  
+   - **sequelize**: es un ORM (Object-Relational Mapping) que facilita la interacción con bases de datos SQL.  
+   - **sqlite3**: es el motor de base de datos que usaremos para almacenar los datos.  
+   - **dotenv**: nos permite cargar variables de entorno desde un archivo `.env`.
+   - **cors**: es un middleware que permite manejar las políticas de CORS (Cross-Origin Resource Sharing). Basicamente permite que nuestro backend pueda ser consumido desde otros dominios (como nuestro frontend).
+   - **morgan**: es un middleware para registrar las solicitudes HTTP en la consola, lo que ayuda en el desarrollo y depuración.
 
 3. Instalamos las dependencias de desarrollo (opcional):
    ```bash
