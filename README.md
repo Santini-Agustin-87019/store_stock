@@ -1,4 +1,11 @@
-# Stock Store Backend
+# Stock Store 
+
+##  Descripcion 
+
+Este proyecto es un backend para la gestion de stock de una tienda. Permite manejar productos, movimientos de stock (entradas y salidas) y usuarios. Esta construido con Node.js, Express y Sequelize, utilizando SQLite como base de datos.
+Es puramente realizado por mi para aprender y practicar el desarrollo de backends con Node.js y bases de datos SQL.
+
+Actualmente esta en desarrollo, por lo que algunas funcionalidades pueden no estar completas o ser inestables.
 
 ## Mapa del Proyecto (File Structure)
 
