@@ -93,4 +93,53 @@ En la carpeta `src/models/` voy a crear los modelos necesarios para la aplicacio
    - Defini las relaciones entre los modelos:
       - Un Producto puede tener muchos Movimientos (`Product.hasMany(Movement, { foreignKey: 'product_sku', sourceKey: 'sku' })`).
       - Un Movimiento pertenece a un Producto (`Movement.belongsTo(Product, { foreignKey: 'product_sku', targetKey: 'sku' })`).
+   - Exporte los modelos para usarlos en otras partes de la aplicacion.
+## 4. Creacion de Rutas y Controladores
+1. Creacion de Controllers de movimientos (`src/controllers/movementController.js`):
+   - Importe los modelos necesarios (Movement, Product).
+   - Cree funciones para manejar las operaciones CRUD:
+      - `createMovement`: para crear un nuevo movimiento y actualizar el stock del producto asociado.
+         - Para la creacion de un movimiento, uso la `transaction` de sequelize para asegurar que las validaciones y actualizaciones se realicen de manera atomica.
+         - Comence creado una transaccion con `sequelize.transaction()`.
+         - Obtuve del `req.body` los datos necesarios para crear el movimiento (tipo, items, usuario_id) ya que tengo que saber cuantos items se estan moviendo.
+         - Despues verifique que cada item, el tipo de movimiento y el usuario que lo realizo.
+         - Cree un Array para albergar todos los movimientos y Luego itere sobre cada item para procesar cada movimiento individualmente. haciendo las validaciones necesarias (segun el tipo de movimiento, si es entrada o salida, y si hay stock suficiente en caso de ser salida).
+         - Luego busco el producto asociado al movimiento usando `Product.findOne()`. (por SKU). Si no existe, lanzo un error.
+         - Dependiendo del tipo de movimiento (entrada o salida), actualizo el stock del producto.
+         - Creo el movimiento en la base de datos con `Movement.create()`, pasando la transaccion como opcion.
+         - Agrego el movimiento creado al Array de movimientos. `movimientosCreados.push(movimiento);`.
+         - commit de la transaccion si todo sale bien. `t.commit()`.
+### 5. Crear y purgar el proyecto de vite con React (frontend)
+1. En la terminal, fuera al mismo nivel que el backend, ejecuta el comando para crear un nuevo proyecto en Vite.
+``` bash
+npm create vite@latest
+```
+2. Vite viene con muchas cosas que no nos interesan, debemos borrar algunas cosas.
+   - Borramos los `.css` que no usemos. (`App.css`, `index.css`).
+   - Quitamos las referencias de otros archivos.
+ 
+3. Instalamos las dependencias necesarias para el frontend.
+   - En este caso utilizaremos Axios, React-router-dom y Bootstrap
+      - `axios`: para conectarnos al backend y hacer peticiones HTTP.
+      - `react-router-dom`: para manejar las rutas en la aplicacion React. (/productos, /movimientos, etc).
+      - `bootstrap`: para estilos rapidos y responsivos.
+``` bash
+   npm install axios react-router-dom bootstrap
+```
+
+4. Arquitectura del proyecto profecional
+```
+forntend-stock/
+├── node_modules/   
+├── src/
+│   ├── components/     # Componentes reutilizables, las piezas de LEGO (Navbar.jsx, ProductCard.jsx, etc).
+│   ├── pages/          # (o views) son las pantallas completas.
+│   ├── services/       # Aca va la conexion con la API.
+│   ├── context/        # Estado global con Context API. Guardamos el carrito por ej. para que no se pierda al cambiar de pagina. 
+│   ├── hooks/          # Custom hooks para reutilizar logica.
+│   ├── App.jsx         # Configuracion de rutas y estructura principal.
+│   └── main.jsx        # Punto de entrada. Renderiza la app en el DOM
+
+```
+
 

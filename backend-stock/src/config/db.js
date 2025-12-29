@@ -18,7 +18,7 @@ const sequelize = new Sequelize({
 const connectDB = async () => {
   try {
     await sequelize.authenticate(); // Probar conexión a la base de datos
-    await sequelize.sync({ alter: true }); // Sincronizar modelos con la base de datos
+    await sequelize.sync(); // Sincronizar modelos con la base de datos (solo crea tablas si no existen)
 
     console.log("✅ Conexión a la base de datos establecida correctamente.");
   } catch (error) {
