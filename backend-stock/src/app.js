@@ -4,6 +4,7 @@ import cors from "cors";
 
 // Importamos rutas
 import movementRoutes from "./routes/movement.routes.js";
+import productRoutes from "./routes/product.routes.js";
 
 // Creamos el servidor - iniciamos la app
 const app = express(); // Instancia de Express
@@ -20,5 +21,6 @@ app.get("/", (req, res) => {
 
 // Rutas
 app.use("/api/movements", movementRoutes);
+app.use("/api/products", productRoutes);
 
 export default app;

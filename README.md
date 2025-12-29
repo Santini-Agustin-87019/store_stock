@@ -139,7 +139,6 @@ forntend-stock/
 │   ├── hooks/          # Custom hooks para reutilizar logica.
 │   ├── App.jsx         # Configuracion de rutas y estructura principal.
 │   └── main.jsx        # Punto de entrada. Renderiza la app en el DOM
-
 ```
 
 

@@ -3,7 +3,7 @@ import { Sequelize } from "sequelize";
 // Configuracion de la base de datos SQLite (archivo en memoria local)
 const sequelize = new Sequelize({
   dialect: "sqlite", // Tipo de base de datos
-  storage: "./database.sqlite", // Ruta al archivo de la base de datos
+  storage: "./db.sqlite", // Ruta al archivo de la base de datos
   logging: false, // Desactivar logs de SQL en pantalla (INSERT, UPDATE, etc.)
   define: {
     freezeTableName: true, // Evitar pluralizar nombres de tablas
