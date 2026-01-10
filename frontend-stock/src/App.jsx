@@ -1,14 +1,23 @@
 import { useState } from "react";
-import reactLogo from "./assets/react.svg";
-import viteLogo from "/vite.svg";
+import { BrowserRouter, Route, Routes, Navigate } from "react-router-dom";
+
+import { POSPage } from "./pages/POSPage";
+import { InventoryPage } from "./pages/InventoryPage";
 
 function App() {
-  const [count, setCount] = useState(0);
-
   return (
-    <div>
-      <button className="btn btn-primary">Press here</button>
-    </div>
+    <>
+      <BrowserRouter>
+        {/* <Menu /> */}
+        <div className="divBody">
+          <Routes>
+            <Route path="/productos" element={<InventoryPage />} />
+            <Route path="/venta" element={<POSPage />} />
+            {/* <Route path="*" element={ <Navigate to="/inicio" replace} /> */}
+          </Routes>
+        </div>
+      </BrowserRouter>
+    </>
   );
 }
 
